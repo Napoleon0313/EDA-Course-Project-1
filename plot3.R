@@ -9,8 +9,13 @@ data <- fread("./household_power_consumption.txt",na.strings = "?",data.table = 
 data$Date_Time <- strptime(data$Date_Time,format = "%d/%m/%Y %H:%M:%S")
 
 # plot
+Sys.setlocale("LC_TIME", "English")
+
 with(data,plot(Date_Time,Sub_metering_1,type = "n",xlab = "",ylab = "Energy sub metering"))
 with(data,lines(Date_Time,Sub_metering_1,col = "black"))
 with(data,lines(Date_Time,Sub_metering_2,col = "red"))
 with(data,lines(Date_Time,Sub_metering_3,col = "blue"))
-legend("topright",col = c("black","red","blue"),legend = names(data)[4:2],lty = 1,cex = 0.4)
+legend("topright",col = c("black","red","blue"),legend = names(data)[4:2],lty = 1,cex = 0.8,x.intersp = 1.5, y.intersp = 0.5)
+
+dev.copy(png, width = 480, height = 480,file = "./EDA-Course Project 1/plot3.png")
+dev.off()

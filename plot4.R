@@ -10,6 +10,8 @@ data$Date_Time <- strptime(data$Date_Time,format = "%d/%m/%Y %H:%M:%S")
 
 # plot
 par(mfrow = c(2,2))
+Sys.setlocale("LC_TIME", "English")
+
 # No.1
 with(data,plot(Date_Time,Global_active_power,type = "l",xlab = "",ylab = "Global active power"))
 
@@ -21,8 +23,10 @@ with(data,plot(Date_Time,Sub_metering_1,type = "n",xlab = "",ylab = "Energy sub 
 with(data,lines(Date_Time,Sub_metering_1,col = "black"))
 with(data,lines(Date_Time,Sub_metering_2,col = "red"))
 with(data,lines(Date_Time,Sub_metering_3,col = "blue"))
-legend("topright",col = c("black","red","blue"),legend = names(data)[4:2],lty = 1,bty = "n",cex = 0.4)
+legend("topright",col = c("black","red","blue"),legend = names(data)[4:2],lty = 1,bty = "n",cex = 0.6,x.intersp = 1, y.intersp = 0.2)
 
 # No.4
 with(data,plot(Date_Time,Global_reactive_power,type = "l",col = "black",xlab = "datetime",ylab ="Global_reactive_power"))
 
+dev.copy(png, width = 480, height = 480,file = "./EDA-Course Project 1/plot4.png")
+dev.off()

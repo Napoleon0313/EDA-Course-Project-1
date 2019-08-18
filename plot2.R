@@ -8,8 +8,10 @@ data <- fread("./household_power_consumption.txt",na.strings = "?",data.table = 
         select(Date_Time:Global_active_power)
 data$Date_Time <- strptime(data$Date_Time,format = "%d/%m/%Y %H:%M:%S")
 
+
 # plot
-data1 <- data
-data1$Date_Time <- wday(data1$Date_Time,label = TRUE)
+Sys.setlocale("LC_TIME", "English")
 with(data,plot(Date_Time,Global_active_power,type = "l",xlab = "",ylab = "Global active power (killowatts)"))
 
+dev.copy(png, width = 480, height = 480,file = "./EDA-Course Project 1/plot2.png")
+dev.off()
