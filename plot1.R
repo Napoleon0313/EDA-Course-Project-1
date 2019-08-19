@@ -9,6 +9,6 @@ data <- fread("./household_power_consumption.txt",na.strings = "?",data.table = 
 data$Date_Time <- strptime(data$Date_Time,format = "%d/%m/%Y %H:%M:%S")
 
 # plot
-with(data,hist(Global_active_power,col = "red",main = "Global_active_power",xlab = "Global_active_power (killowatts)"))
+with(data,hist(Global_active_power,col = "red",main = "Global active power",xlab = "Global active power (killowatts)"))
 dev.copy(png, width = 480, height = 480,file = "./EDA-Course Project 1/plot1.png")
 dev.off()
